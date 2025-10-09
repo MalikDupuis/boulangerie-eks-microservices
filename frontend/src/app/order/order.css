@@ -1,0 +1,62 @@
+.order-container {
+  max-width: 500px;
+  margin: 30px auto;
+  background: #fffaf5;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", sans-serif;
+}
+
+.title {
+  text-align: center;
+  color: #d2691e;
+}
+
+.form-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+input {
+  width: 80px;
+  padding: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px;
+  background: #ffb347;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #ffa500;
+}
+
+.subtitle {
+  margin-top: 30px;
+  color: #8b4513;
+}
+
+.orders-list {
+  list-style: none;
+  padding: 0;
+}
+
+.orders-list li {
+  background: #fff3e0;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 8px;
+}

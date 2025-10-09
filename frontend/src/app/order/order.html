@@ -1,0 +1,41 @@
+<div class="order-container">
+  <h1 class="title">Passer une commande</h1>
+
+  <form (ngSubmit)="submitOrder()" class="order-form">
+    <div class="form-group">
+      <label for="painChocolat">Pain au chocolat 🥐</label>
+      <input
+        id="painChocolat"
+        type="number"
+        min="0"
+        [(ngModel)]="order.painChocolat"
+        name="painChocolat"
+        placeholder="Quantité"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="parisBrest">Paris-Brest 🍰</label>
+      <input
+        id="parisBrest"
+        type="number"
+        min="0"
+        [(ngModel)]="order.parisBrest"
+        name="parisBrest"
+        placeholder="Quantité"
+      />
+    </div>
+
+    <button type="submit" class="btn">Commander</button>
+  </form>
+
+  <h2 class="subtitle">Mes commandes</h2>
+
+  <ul class="orders-list">
+    <li *ngFor="let cmd of commandes">
+      🧾 Commande #{{ cmd.id }} — 
+      {{ cmd.painChocolat }} pains au chocolat, 
+      {{ cmd.parisBrest }} Paris-Brest
+    </li>
+  </ul>
+</div>
