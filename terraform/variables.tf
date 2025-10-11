@@ -32,3 +32,23 @@ variable "instance_type" {
   type        = string
   default     = "t3.medium"
 }
+
+variable "users_db_username" {
+  description = "Username of the user db"
+  type = string  
+}
+
+variable "users_db_password" {
+  description = "Username of the user db"
+  type = string  
+}
+
+variable "order_db_username" {
+  description = "Username of the order db"
+  type = string  
+}
+
+variable "order_db_password" {
+  description = "Password of the order db"
+  type = string  
+}
