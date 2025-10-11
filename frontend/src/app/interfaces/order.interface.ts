@@ -1,5 +1,5 @@
-export interface Commande {
-  id: number;
+export interface OrderInterface {
   painChocolat: number;
   parisBrest: number;
+  userId: number;
 }

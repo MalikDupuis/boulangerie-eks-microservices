@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Commande } from '../interfaces/order.interface';
+import { OrderInterface } from '../interfaces/order.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
-  private apiUrl = 'http://localhost:8081/api/commandes'; // URL du microservice commande
+  private apiUrl = 'http://localhost:8081/api/orders'; // URL du microservice commande
 
   constructor(private http: HttpClient) {}
 
-  getCommandes(): Observable<Commande[]> {
-    return this.http.get<Commande[]>(this.apiUrl);
+  getOrders(): Observable<OrderInterface[]> {
+    return this.http.get<OrderInterface[]>(this.apiUrl);
   }
 
-  createCommande(commande: Commande): Observable<Commande> {
-    return this.http.post<Commande>(this.apiUrl, commande);
+  createOrder(commande: OrderInterface): Observable<OrderInterface> {
+    return this.http.post<OrderInterface>(this.apiUrl, commande);
   }
 }
