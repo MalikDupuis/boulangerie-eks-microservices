@@ -7,7 +7,7 @@ import { OrderInterface } from '../interfaces/order.interface';
   providedIn: 'root'
 })
 export class OrderService {
-  private apiUrl = 'http://localhost:8081/api/orders'; // URL du microservice commande
+  private apiUrl = '/api/orders'; 
 
   constructor(private http: HttpClient) {}
 
