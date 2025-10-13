@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bakery-frontend
+  labels:
+    app: bakery-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bakery-frontend
+  template:
+    metadata:
+      labels:
+        app: bakery-frontend
+    spec:
+      containers:
+        - name: bakery-frontend
+          image: malikmalikmalik/frontend:latest
+          ports:
+            - containerPort: 5000
+          env:
+            - name: USER_SERVICE_URL
+              value: "http://user-service:8080/api/users"
+            - name: COMMANDE_SERVICE_URL
+              value: "http://commande-service:8081/api/commandes"
