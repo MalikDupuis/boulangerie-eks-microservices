@@ -40,7 +40,7 @@ jobs:
       - name: Build & push backend image
         uses: docker/build-push-action@v5
         with:
-          context: ./backend
+          context: ./order-service
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/boulangerie-backend:latest
       - name: Deploy to EKS
