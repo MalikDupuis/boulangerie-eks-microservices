@@ -53,5 +53,5 @@ jobs:
         run: |
           kubectl set image deployment/commande-service commande-service=${{ secrets.DOCKERHUB_USERNAME }}/order-service:latest
           kubectl set image deployment/bakery-frontend bakery-frontend=${{ secrets.DOCKERHUB_USERNAME }}/frontend:latest
-          kubectl rollout status deployment/backend
-          kubectl rollout status deployment/frontend
+          kubectl rollout status deployment/commande-service
+          kubectl rollout status deployment/bakery-frontend
