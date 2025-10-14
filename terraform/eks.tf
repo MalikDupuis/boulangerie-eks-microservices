@@ -5,6 +5,7 @@ module "eks" {
   name               = local.app_name
   kubernetes_version = "1.30"
 
+
   endpoint_public_access = true
 
   addons = {
@@ -29,9 +30,11 @@ module "eks" {
       ami_type       = "AL2023_x86_64_STANDARD"
       instance_types = ["t3.micro"]
 
+      
+
       min_size     = 2
       max_size     = 10
-      desired_size = 2
+      desired_size = 4
 
       labels = {
         role = "default"
@@ -55,7 +58,19 @@ module "eks" {
     }
   }
 
-  enable_cluster_creator_admin_permissions = true
+  access_entries = {
+    malik-admin = {
+      principal_arn = "arn:aws:iam::307952838934:user/malik"
+      policy_associations = {
+        admin = {
+          policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+          access_scope = {
+            type = "cluster"
+          }
+        }
+      }
+    }
+  }
 
   create_kms_key = false
 

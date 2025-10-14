@@ -17,8 +17,8 @@ module "rds_users_db" {
 
   vpc_security_group_ids = [aws_security_group.rds_sg.id]
 
-  maintenance_window = "Mon:00:00-Mon:03:00"
-  backup_window      = "03:00-06:00"
+  maintenance_window      = "Mon:00:00-Mon:03:00"
+  backup_window           = "03:00-06:00"
   backup_retention_period = 7
 
   # Enhanced Monitoring - see example for details on how to create the role
@@ -87,8 +87,8 @@ module "rds_order_db" {
 
   vpc_security_group_ids = [aws_security_group.rds_sg.id]
 
-  maintenance_window = "Mon:00:00-Mon:03:00"
-  backup_window      = "03:00-06:00"
+  maintenance_window      = "Mon:00:00-Mon:03:00"
+  backup_window           = "03:00-06:00"
   backup_retention_period = 7
 
 
@@ -161,6 +161,6 @@ resource "aws_security_group" "rds_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  
+
 }
 
