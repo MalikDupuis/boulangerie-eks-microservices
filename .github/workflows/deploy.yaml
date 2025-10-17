@@ -46,7 +46,7 @@ jobs:
 
       - name: Update kubeconfig for EKS
         run: |
-          aws eks update-kubeconfig --name boulangerie --region ${{ secrets.AWS_REGION }}
+          aws eks update-kubeconfig --name eks-boulangerie --region ${{ secrets.AWS_REGION }}
   
 
       - name: Deploy to EKS
