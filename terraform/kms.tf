@@ -10,7 +10,7 @@ module "kms" {
   key_service_roles_for_autoscaling = ["arn:aws:iam::${var.aws_account_id}:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling"]
 
   # Aliases
-  aliases = ["eks/${local.app_name}"]
+  aliases = ["eks/${local.app_name}/v1"]
 
   tags = {
     Terraform   = "true"

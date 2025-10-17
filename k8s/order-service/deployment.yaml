@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: commande-service
+  name: order-service
   labels:
-    app: commande-service
+    app: order-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: commande-service
+      app: order-service
   template:
     metadata:
       labels:
-        app: commande-service
+        app: order-service
     spec:
       containers:
-        - name: commande-service
+        - name: order-service
           image: malikmalikmalik/order-service:latest
           ports:
             - containerPort: 8081

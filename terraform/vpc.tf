@@ -1,7 +1,7 @@
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
 
-  name = "${local.app_name}-vpc"
+  name = "boulangerie-${local.app_name}-vpc"
   cidr = "10.0.0.0/16"
 
   azs             = ["${var.region}a", "${var.region}b", "${var.region}c"]

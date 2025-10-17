@@ -2,7 +2,7 @@ module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 21.0"
 
-  name               = local.app_name
+  name               = "eks-${local.app_name}"
   kubernetes_version = "1.30"
 
 
@@ -60,7 +60,7 @@ module "eks" {
 
   access_entries = {
     malik-admin = {
-      principal_arn = "arn:aws:iam::307952838934:user/malik"
+      principal_arn = "arn:aws:iam::${var.aws_account_id}:user/malik"
       policy_associations = {
         admin = {
           policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"

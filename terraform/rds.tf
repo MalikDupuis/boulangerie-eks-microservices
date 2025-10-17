@@ -1,14 +1,14 @@
 module "rds_users_db" {
   source = "terraform-aws-modules/rds/aws"
 
-  identifier = "${local.app_name}-${var.environment}-users-db"
+  identifier = "${local.app_name}-${var.environment}-users-db-boulangerie"
 
   engine            = "mysql"
   engine_version    = "5.7"
   instance_class    = "db.t3.micro"
   allocated_storage = 5
 
-  db_name  = "users_db"
+  db_name  = "boulangerie_users_db"
   username = var.users_db_username
   password = var.users_db_password
   port     = "3306"
@@ -24,7 +24,7 @@ module "rds_users_db" {
   # Enhanced Monitoring - see example for details on how to create the role
   # by yourself, in case you don't want to create it automatically
   monitoring_interval    = "30"
-  monitoring_role_name   = "MyUserRDSMonitoringRole"
+  monitoring_role_name   = "MyUserRDS"
   create_monitoring_role = true
 
   # DB subnet group
@@ -71,14 +71,14 @@ module "rds_users_db" {
 module "rds_order_db" {
   source = "terraform-aws-modules/rds/aws"
 
-  identifier = "${local.app_name}-${var.environment}-order-db"
+  identifier = "${local.app_name}-${var.environment}-order-db-boulangerie"
 
   engine            = "mysql"
   engine_version    = "5.7"
   instance_class    = "db.t3.micro"
   allocated_storage = 5
 
-  db_name  = "order_db"
+  db_name  = "boulangerie_order_db"
   username = var.order_db_username
   password = var.order_db_password
   port     = "3306"
@@ -95,7 +95,7 @@ module "rds_order_db" {
   # Enhanced Monitoring - see example for details on how to create the role
   # by yourself, in case you don't want to create it automatically
   monitoring_interval    = "30"
-  monitoring_role_name   = "MyOrderRDSMonitoringRole"
+  monitoring_role_name   = "MyOrderRDS"
   create_monitoring_role = true
 
   # DB subnet group
@@ -144,23 +144,20 @@ resource "aws_security_group" "rds_sg" {
   description = "Security Group for RDS databases"
   vpc_id      = module.vpc.vpc_id
 
-  # Autoriser uniquement le trafic MySQL depuis le réseau privé du VPC
+  # Autoriser uniquement le trafic MySQL depuis le SG des nœuds EKS
   ingress {
-    description = "MySQL access from private subnets"
-    from_port   = 3306
-    to_port     = 3306
-    protocol    = "tcp"
-    cidr_blocks = module.vpc.private_subnets_cidr_blocks
+    description      = "MySQL access from EKS nodes"
+    from_port        = 3306
+    to_port          = 3306
+    protocol         = "tcp"
+    security_groups  = [module.eks.node_security_group_id]
   }
 
-  # Autoriser toutes les connexions sortantes (pour les réponses)
+  # Autoriser toutes les connexions sortantes
   egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
-
 }
-

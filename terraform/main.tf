@@ -1,10 +1,10 @@
 terraform {
-  backend "s3" {
-    bucket = "307952838934-bucket-state-file"
+  /* backend "s3" {
+    bucket = "${var.aws_account_id}-bucket-state-file-boulangerie-v1"
     key    = "terraform.eks.tfstate"
-    region = "eu-west-1"
+    region = var.region
 
-  }
+  } */
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -30,7 +30,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "state" {
-  bucket = "${local.app_name}-${var.aws_account_id}-bucket-state-file"
+  bucket = "${var.aws_account_id}-bucket-state-file-boulangerie-v1"
 
   tags = {
     Name = "State File Bucket"
