@@ -51,7 +51,7 @@ jobs:
 
       - name: Deploy to EKS
         run: |
-          kubectl set image deployment/order-service order-service=${{ secrets.DOCKERHUB_USERNAME }}/order-service:latest
-          kubectl set image deployment/bakery-frontend bakery-frontend=${{ secrets.DOCKERHUB_USERNAME }}/frontend:latest
+          kubectl set image deployment/order-service order-service=${{ secrets.DOCKERHUB_USERNAME }}/boulangerie-backend:latest
+          kubectl set image deployment/bakery-frontend bakery-frontend=${{ secrets.DOCKERHUB_USERNAME }}/boulangerie-frontend:latest
           kubectl rollout status deployment/order-service
           kubectl rollout status deployment/bakery-frontend
