@@ -7,8 +7,8 @@ import { OrderInterface } from '../interfaces/order.interface';
   providedIn: 'root'
 })
 export class OrderService {
-  //private apiUrl = '/api/orders'; 
-  private apiUrl = 'http://localhost:8081/api/orders';
+  private apiUrl = '/api/orders'; 
+  //private apiUrl = 'http://localhost:8081/api/orders';
 
   constructor(private http: HttpClient) {}
 
