@@ -43,9 +43,11 @@ Le tout est déployé via **terraform** sur **AWS (EKS)**.
 
 
 ---
+```
 
 ## ⚙️ Technologies utilisées
 
+```text
 | Couche | Technologies |
 |--------|---------------|
 | Frontend | Angular, TypeScript, HTML, CSS |
@@ -57,6 +59,8 @@ Le tout est déployé via **terraform** sur **AWS (EKS)**.
 
 ---
 
+```
+
 ## 👨‍💻 Auteur
 
 **Malik DUPUIS**  
@@ -65,3 +69,4 @@ Le tout est déployé via **terraform** sur **AWS (EKS)**.
 📍 Basé en France  
 
 ---
+
