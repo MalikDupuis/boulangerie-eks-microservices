@@ -17,7 +17,6 @@ export class Register {
   user:UserInterface = {
     username: '',
     password: '',
-    id:-1,
   };
 
   constructor(
