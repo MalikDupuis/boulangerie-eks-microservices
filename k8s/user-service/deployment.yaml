@@ -18,14 +18,15 @@ spec:
         - name: user-service
           image: malikmalikmalik/user-service:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 8081
           env:
-            - name: DB_URL
-              value: "boulangerie-dev-users-db.c3womcw2gy3m.eu-west-1.rds.amazonaws.com"
-            - name: DB_USER
-              value: "Userusername"
-            - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: user-db-secret
-                  key: password
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: user-db-secret
+                key: DB_USERNAME
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: user-db-secret
+                key: DB_PASSWORD

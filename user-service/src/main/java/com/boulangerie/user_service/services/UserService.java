@@ -1,5 +1,6 @@
 package com.boulangerie.user_service.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,5 +16,13 @@ public class UserService {
 
     public Optional<User> findById(Long id){
         return userRepository.findById(id);
+    }
+
+    public User register(User user){
+        return userRepository.save(user);
+    }
+
+    public List<User> getAll(){
+        return userRepository.findAll();
     }
 }
